@@ -6,6 +6,7 @@ import blogRouter from './route/blog.route.js';
 import fileUpload from 'express-fileupload';
 import { v2 as cloudinary } from 'cloudinary';
 import cookieParser from "cookie-parser";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -14,6 +15,10 @@ const PORT = process.env.PORT;
 const MONGODB_URL = process.env.MONGODB_URI;
 
 // console.log(MONGODB_URL);
+
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+}));
 
 app.use(express.json());
 app.use(cookieParser());
