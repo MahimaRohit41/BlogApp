@@ -16,9 +16,13 @@ const MONGODB_URL = process.env.MONGODB_URI;
 
 // console.log(MONGODB_URL);
 
-app.use(cors({
-    origin: process.env.FRONTEND_URL,
-}));
+app.use(
+    cors({
+      origin: process.env.FRONTEND_URL,
+      credentials: true,
+      methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+  );
 
 app.use(express.json());
 app.use(cookieParser());
