@@ -59,7 +59,7 @@ function Navbar() {
             </div>
           </div>
           <div className="hidden md:flex space-x-2">
-            {isAuthenticated && profile?.user?.role === "admin" ? (
+            {profile?.user?.role === "admin" ? (
               <Link
                 to="/dashboard"
                 className="bg-blue-600 text-white font-semibold hover:bg-blue-800 duration-300 px-4 py-2 rounded"
