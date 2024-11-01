@@ -40,7 +40,8 @@ function MyBlogs() {
         <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:ml-40">
           {myBlogs && myBlogs.length > 0 ? (
             myBlogs.map((element) => (
-              <div
+              <Link
+                to={`/blog/${element._id}`}
                 className="bg-white shadow-lg rounded-lg overflow-hidden"
                 key={element._id}
               >
@@ -73,7 +74,7 @@ function MyBlogs() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <p className="text-center text-gray-500">
