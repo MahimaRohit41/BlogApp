@@ -61,7 +61,7 @@ function Register() {
     } catch (error) {
       console.log(error);
       toast.error(
-        error.response.data.message || "Please fill the required fields"
+        error?.response?.data?.message || "Please fill the required fields"
       );
     }
   };

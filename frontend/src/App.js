@@ -8,20 +8,23 @@ import Login from './pages/Login';
 import Registor from './pages/Registor';
 import Dashboard from './pages/Dashboard';
 import Creators from './pages/Creator';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthProvider';
 import { Toaster } from 'react-hot-toast';
+import UpdateBlog from './admin/UpdateBlog';
+import Detail from './pages/Detail';
 
 const App = () => {
   const location = useLocation();
   const hideNavbarAndFooter = ['/login', '/dashboard', '/register'].includes(location.pathname);
   const { blogs } = useAuth();
+  let token = localStorage.getItem("jwt");
   console.log(blogs);
   return (
     <>
       {!hideNavbarAndFooter && <Navbar/>}
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={token ? <Home /> : <Navigate to={"/login"} />}/>
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/creators" element={<Creators/>}/>
@@ -29,6 +32,8 @@ const App = () => {
         <Route path="/register" element={<Registor/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/blog" element={<Blog/>}/>
+        <Route path="/blog/update/:id" element={<UpdateBlog/>}/>
+        <Route path="/blog/:id" element={<Detail/>}/>
       </Routes>
       <Toaster />
       {!hideNavbarAndFooter && <Footer/>}
