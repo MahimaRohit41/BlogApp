@@ -41,7 +41,7 @@ function Login() {
       navigateTo("/");
     } catch (error) {
       console.log(error);
-      alert("Error in User login");
+      // alert("Error in User login");
       toast.error(
         error.response.data.message || "Please fill the required fields",
         {

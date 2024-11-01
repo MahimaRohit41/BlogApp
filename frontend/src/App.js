@@ -13,6 +13,7 @@ import { useAuth } from './context/AuthProvider';
 import { Toaster } from 'react-hot-toast';
 import UpdateBlog from './admin/UpdateBlog';
 import Detail from './pages/Detail';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/blog/update/:id" element={<UpdateBlog/>}/>
         <Route path="/blog/:id" element={<Detail/>}/>
+        <Route path="/*" element={<NotFound/>}/>
       </Routes>
       <Toaster />
       {!hideNavbarAndFooter && <Footer/>}
